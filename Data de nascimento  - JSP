@@ -1,0 +1,47 @@
+# Atividade -JSP
+<%@ page language="java" %>
+<%@ page import="java.util.Calendar" %>
+<%
+	String nome = request.getParameter("nome");
+	String dataNascStr = request.getParameter("data_nasc");
+	
+	Calendar dataNasc = Calendar.getInstance();
+	dataNasc.setTimeInMillis(Date.valueOf(dataNascStr).getTime());
+	
+	int diaSemana = dataNasc.get(Calendar.DAY_OF_WEEK);
+	
+	String nomeDiaSemana = "";
+	switch(diaSemana) {
+		case Calendar.SUNDAY:
+			nomeDiaSemana = "Domingo";
+			break;
+		case Calendar.MONDAY:
+			nomeDiaSemana = "Segunda-feira";
+			break;
+		case Calendar.TUESDAY:
+			nomeDiaSemana = "Terça-feira";
+			break;
+		case Calendar.WEDNESDAY:
+			nomeDiaSemana = "Quarta-feira";
+			break;
+		case Calendar.THURSDAY:
+			nomeDiaSemana = "Quinta-feira";
+			break;
+		case Calendar.FRIDAY:
+			nomeDiaSemana = "Sexta-feira";
+			break;
+		case Calendar.SATURDAY:
+			nomeDiaSemana = "Sábado";
+			break;
+	}
+%>
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Dia da Semana</title>
+</head>
+<body>
+	<h1>Dia da Semana</h1>
+	<p><%= nome %>, você nasceu em <%= nomeDiaSemana %>.</p>
+</body>
+</html>
